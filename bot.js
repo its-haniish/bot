@@ -60,7 +60,7 @@ const sendMessage=async () => {
         try {
             console.log("Starting browser...");
             const browser=await puppeteer.launch({
-                headless: false,
+                headless: true,
                 executablePath: '/snap/bin/chromium',
                 args: [
                     '--no-sandbox',
