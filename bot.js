@@ -61,7 +61,13 @@ const sendMessage=async () => {
             console.log("Starting browser...");
             const browser=await puppeteer.launch({
                 headless: false,
-                executablePath: '/snap/bin/chromium'  // ✅ Make sure Chromium is installed
+                executablePath: '/snap/bin/chromium',
+                args: [
+                    '--no-sandbox',
+                    '--disable-setuid-sandbox',
+                    '--disable-notifications',
+                    '--disable-popup-blocking'
+                ]
             });
 
             const page=await browser.newPage();
