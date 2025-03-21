@@ -59,7 +59,11 @@ const sendMessage=async () => {
     while (true) { // Infinite loop to keep sending messages
         try {
             console.log("Starting browser...");
-            const browser=await puppeteer.launch({ headless: true }); // Open new browser every time
+            const browser=await puppeteer.launch({
+                headless: false,
+                executablePath: '/snap/bin/chromium'  // ✅ Make sure Chromium is installed
+            });
+
             const page=await browser.newPage();
 
             await page.goto("https://ngl.link/crssiet_confession28149", { waitUntil: "domcontentloaded" });
